@@ -6,6 +6,11 @@
 
 <h:head></h:head> 
 <body> 
+
 	welcome developpeur #{loginBean.employe.nom}
+	<h:form>
+	<h:commandButton action="#{loginBean.doLogout()}" 
+	value="logout" />
+	</h:form>
 </body> 
 </html>

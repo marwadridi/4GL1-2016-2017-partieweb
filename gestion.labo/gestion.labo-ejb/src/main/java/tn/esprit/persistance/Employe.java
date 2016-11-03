@@ -2,6 +2,8 @@ package tn.esprit.persistance;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.Date;
+
 import javax.persistence.*;
 
 /**
@@ -20,6 +22,10 @@ public class Employe {
 	private int cin;
 	private String login;
 	private String password;
+	
+	@Temporal(TemporalType.DATE)
+	private Date dateNaissance;
+
 	//private static final long serialVersionUID = 1L;
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -76,5 +82,12 @@ public class Employe {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
    
 }

@@ -3,8 +3,10 @@ package edu.esprit.mb;
 import java.io.Serializable;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import tn.esprit.interfaces.EmployeServiceLocal;
 import tn.esprit.persistance.Developpeur;
@@ -44,13 +46,23 @@ public class LoginBean implements Serializable{
 			//redirection
 		}
 		else 
-			navigateTo="/error?faces-redirect=true";
 			
+			FacesContext.getCurrentInstance().addMessage
+			("form:log", new FacesMessage("bad credantials"));
 		
 		
 		return navigateTo;
 	}
+	
+	public String doLogout(){
+		
+		FacesContext.getCurrentInstance().getExternalContext()
+		.invalidateSession();
+		return "/welcome?faces-redirect=true";
+		
+	}
 
+	
 	public String getLogin() {
 		return login;
 	}

@@ -6,7 +6,7 @@
 
 <h:head></h:head>
 <body>
-	<h:form>
+	<h:form id="form">
 	<h:panelGrid columns="2">
 		<h:outputText value="login" />
 		<h:inputText value="#{loginBean.login}" />
@@ -14,9 +14,10 @@
 		<h:outputText value="password" />
 		<h:inputSecret value="#{loginBean.password}" />
 </h:panelGrid>		
-		<h:commandButton value="authenticate" action="#{loginBean.doLogin}"/>
-
+		<h:commandButton id="log" value="authenticate" action="#{loginBean.doLogin}"/>
+	<h:message for="log" />
 	</h:form>
+	
 
 </body>
 </html>

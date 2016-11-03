@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<h:form>
+		<h:panelGrid columns="3">
+		<h:outputText value="nom" />
+		<h:inputText id="nom" value="#{subscriptionBean.developpeur.nom}" 
+		required="true"  requiredMessage="nom obligatoire">
+		<f:ajax event="blur" execute="@this" render="m_nom" />
+		</h:inputText>
+		
+		<h:message id="m_nom" for="nom" styleClass="color:red" />
+		
+		<h:outputText value="cin" />
+		<h:inputText id="cin" value="#{subscriptionBean.developpeur.cin}" validatorMessage="min 8 max 8">
+		<f:validateLength minimum="8" maximum="8" />
+		</h:inputText>
+		<h:message for="cin"/>
+		<h:outputText value="login" />
+		<h:inputText id="login" value="#{subscriptionBean.developpeur.login}"
+		required="true" requiredMessage="login obligatoire" >
+		
+		
+		</h:inputText>
+		<h:message for="login"/>
+		<h:outputText value="password" />
+		<h:inputSecret id="pwd" value="#{subscriptionBean.developpeur.password}" 
+		
+		required="true" requiredMessage="password obligatoire"
+		validatorMessage="min 5 caractères">
+		<f:validateLength minimum="5"></f:validateLength>
+		</h:inputSecret>
+		<h:message for="pwd"/>
+		
+		<h:outputText value="date de naissance" />
+		
+		
+		<h:inputText id="date" value="#{subscriptionBean.developpeur.dateNaissance}" 
+		validatorMessage="format date invalide">
+		<f:convertDateTime pattern="MM/dd/yyyy"/>
+		</h:inputText>
+		<h:message for="date"/>
+		
+		<h:outputText value="mail" />
+		<h:inputText id="mail" value="#{subscriptionBean.contact.email}" validatorMessage="mail invalide" >
+		<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+		</h:inputText>
+		<h:message for="mail"/>
+		
+		</h:panelGrid>
+		<h:panelGrid columns="2">
+		<h:outputText value="adresse" />
+		<h:inputText value="#{subscriptionBean.contact.adresse}" />
+		<h:outputText value="numero tel" />
+		<h:inputText value="#{subscriptionBean.contact.numTel}" />
+		
+		<h:commandButton actionListener="#{subscriptionBean.doSubscribe()}" 
+		value="add" >
+	
+		
+		</h:commandButton>
+		
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>
