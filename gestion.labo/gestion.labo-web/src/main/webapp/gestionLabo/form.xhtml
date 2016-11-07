@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	>
+
+	
+
+		<h:form rendered="#{laboBean.displayForm}">
+			<h:panelGrid columns="2">
+				<h:outputText value="nom" />
+				<h:inputText value="#{laboBean.laboratoire.nom}" />
+				<h:outputText value="adresse" />
+				<h:inputText value="#{laboBean.laboratoire.adresse}" />
+
+
+			</h:panelGrid>
+			<h:panelGrid columns="3">
+			
+				<h:commandButton actionListener="#{laboBean.doAdd}" value="add" />
+				<h:commandButton actionListener="#{laboBean.doDelete}" value="delete" />
+				<h:commandButton actionListener="#{laboBean.doCancel}" value="cancel" />
+
+			</h:panelGrid>
+
+
+
+
+
+
+
+
+
+		</h:form>
+
+
+
+
+
+
+
+</ui:composition>
