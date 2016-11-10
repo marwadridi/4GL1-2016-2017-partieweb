@@ -26,6 +26,9 @@ public class LoginBean implements Serializable{
 	private String password;
 	
 	private Employe employe;
+	private boolean loggedIn;
+	
+	
 	
 	@EJB
 	EmployeServiceLocal employeServiceLocal;
@@ -37,20 +40,22 @@ public class LoginBean implements Serializable{
 		employe=employeServiceLocal.identifierEmploye
 				(login, password);
 		if(employe !=null)
-		{
+		{   
 			if(employe instanceof Technicien)
 				navigateTo="/tech/accueil";
+			setLoggedIn(true);
 			//forword
 			if(employe instanceof Developpeur)
 				navigateTo="/dev/accueil?faces-redirect=true";
+			setLoggedIn(true);
 			//redirection
 		}
 		else 
 			
-			FacesContext.getCurrentInstance().addMessage
+			{FacesContext.getCurrentInstance().addMessage
 			("form:log", new FacesMessage("bad credantials"));
-		
-		
+	
+			}
 		return navigateTo;
 	}
 	
@@ -87,4 +92,13 @@ public class LoginBean implements Serializable{
 		this.employe = employe;
 	}
 
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+
+	
 }

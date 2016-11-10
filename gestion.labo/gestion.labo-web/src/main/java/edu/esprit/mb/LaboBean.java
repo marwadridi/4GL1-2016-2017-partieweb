@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import tn.esprit.interfaces.LaboServiceLocal;
+import tn.esprit.persistance.Domaine;
 import tn.esprit.persistance.Laboratoire;
 
 @ManagedBean
@@ -21,6 +22,8 @@ public class LaboBean implements Serializable {
 	private Laboratoire laboratoire = new Laboratoire();
 
 	private boolean displayForm;
+	
+	private List<Domaine> domaines;
 
 	@EJB
 	LaboServiceLocal laboServiceLocal;
@@ -28,6 +31,7 @@ public class LaboBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		laboratoires = laboServiceLocal.findAll();
+		domaines= laboServiceLocal.getAllDomaines();
 	}
 
 	public void doAdd() {
@@ -77,6 +81,14 @@ public class LaboBean implements Serializable {
 
 	public void setDisplayForm(boolean displayForm) {
 		this.displayForm = displayForm;
+	}
+
+	public List<Domaine> getDomaines() {
+		return domaines;
+	}
+
+	public void setDomaines(List<Domaine> domaines) {
+		this.domaines = domaines;
 	}
 
 }

@@ -10,4 +10,13 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.jsf</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>TechFilter</display-name>
+    <filter-name>TechFilter</filter-name>
+    <filter-class>edu.esprit.filters.TechFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>TechFilter</filter-name>
+    <url-pattern>/TechFilter</url-pattern>
+  </filter-mapping>
 </web-app>
